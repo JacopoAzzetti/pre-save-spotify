@@ -37,8 +37,8 @@ app.get("/callback", async (req, res) => {
 
         const accessToken = tokenResponse.data.access_token;
         
-        await axios.put(`https://api.spotify.com/v1/me/albums`, { ids: [albumId] }, {
-            headers: { Authorization: `Bearer ${token}` }
+        await axios.put(`https://api.spotify.com/v1/me/albums`, { ids: [ALBUM_ID] }, {
+            headers: { Authorization: `Bearer ${accessToken}` }
         });
 
         res.json({ success: true });
