@@ -11,6 +11,7 @@ const CLIENT_ID = process.env.SPOTIFY_CLIENT_ID;
 const CLIENT_SECRET = process.env.SPOTIFY_CLIENT_SECRET;
 const REDIRECT_URI = process.env.REDIRECT_URI;
 const FRONTEND_URL = process.env.FRONTEND_URL;
+const ALBUM_ID = '6FSbKS6KuV7xMkpYX5xRx7';
 
 // URL per avviare il login con Spotify
 app.get("/login", (req, res) => {
