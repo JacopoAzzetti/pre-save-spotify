@@ -24,6 +24,7 @@ app.get("/callback", async (req, res) => {
     const code = req.query.code;
 
     try {
+        // Scambio del 'code' con un 'access_token'
         const tokenResponse = await axios.post("https://accounts.spotify.com/api/token", null, {
             params: {
                 grant_type: "authorization_code",
@@ -36,16 +37,18 @@ app.get("/callback", async (req, res) => {
         });
 
         const accessToken = tokenResponse.data.access_token;
-        
+
+        // Ora che abbiamo il token, facciamo la richiesta per aggiungere l'album
         await axios.put(`https://api.spotify.com/v1/me/albums`, { ids: [ALBUM_ID] }, {
             headers: { Authorization: `Bearer ${accessToken}` }
         });
 
-        res.json({ success: true });
-        
+        // Invia una risposta di successo, puoi anche fare un redirect qui se lo desideri
+        res.send("Album aggiunto alla tua libreria con successo!");
+
     } catch (error) {
         console.error(error);
-        res.send("Errore nell'autenticazione");
+        res.send("Errore nell'autenticazione o nell'aggiunta dell'album");
     }
 });
 
