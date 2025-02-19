@@ -15,7 +15,7 @@ const ALBUM_ID = '6FSbKS6KuV7xMkpYX5xRx7'; // id album da pre-salvare
 
 // URL per avviare il login con Spotify
 app.get("/login", (req, res) => {
-    const scope = "user-library-modify user-library-read"; // Permesso per salvare album
+    const scope = "user-library-modify"; // Permesso per salvare album
     const authUrl = `https://accounts.spotify.com/authorize?client_id=${CLIENT_ID}&response_type=code&redirect_uri=${REDIRECT_URI}&scope=${scope}`;
     res.redirect(authUrl);
 });
