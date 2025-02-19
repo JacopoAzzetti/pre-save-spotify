@@ -36,7 +36,7 @@ app.get("/callback", async (req, res) => {
         });
 
         const accessToken = tokenResponse.data.access_token;
-        res.redirect(`${FRONTEND_URL}/success?token=${accessToken}`);
+        res.redirect(`${FRONTEND_URL}?token=${accessToken}`);
     } catch (error) {
         console.error(error);
         res.send("Errore nell'autenticazione");
