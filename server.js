@@ -45,7 +45,7 @@ app.get("/callback", async (req, res) => {
         });
 
         // Invia una risposta di successo, puoi anche fare un redirect qui se lo desideri
-        res.send("Album aggiunto alla tua libreria con successo!");
+        res.redirect(FRONTEND_URL);
 
     } catch (error) {
         console.error(error);
