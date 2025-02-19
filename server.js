@@ -36,26 +36,16 @@ app.get("/callback", async (req, res) => {
         });
 
         const accessToken = tokenResponse.data.access_token;
-        res.redirect(`${FRONTEND_URL}?token=${accessToken}`);
-    } catch (error) {
-        console.error(error);
-        res.send("Errore nell'autenticazione");
-    }
-});
-
-// Endpoint per salvare l'album
-app.post("/presave", async (req, res) => {
-    const { token, albumId } = req.body;
-
-    try {
+        
         await axios.put(`https://api.spotify.com/v1/me/albums`, { ids: [albumId] }, {
             headers: { Authorization: `Bearer ${token}` }
         });
 
         res.json({ success: true });
+        
     } catch (error) {
         console.error(error);
-        res.status(400).json({ success: false, error: error.response.data });
+        res.send("Errore nell'autenticazione");
     }
 });
 
